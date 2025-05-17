@@ -1,0 +1,12 @@
+const mongoose = require("mongoose");
+// const connection_string = "mongodb://localhost:27017/smartdoorlock";
+require("dotenv").config(); 
+
+const connection_string = process.env.MONGO_URI;
+
+const connect_to_mongodb =()=>
+{
+    mongoose.connect(connection_string );
+}
+
+module.exports = connect_to_mongodb ;

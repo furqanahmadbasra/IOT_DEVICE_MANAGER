@@ -10,7 +10,7 @@ export const DeviceDataProvider = ({ children }) => {
   const fetchLatestData = async () => {
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/get_iot_data');
+      const response = await fetch('https://iot-device-manager.vercel.app/api/user/get_iot_data');
       if (!response.ok) throw new Error('Network response not ok');
       const result = await response.json();
       setDeviceData(result.data);  

@@ -25,7 +25,7 @@ const filteredDevices = devices.filter(device =>
 
     const fetchDevices = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/admin/get_all_iot_data');
+            const response = await fetch('https://iot-device-manager.vercel.app/api/admin/get_all_iot_data');
             const data = await response.json();
             setDevices(data);
         } catch (err) {
@@ -46,7 +46,7 @@ const filteredDevices = devices.filter(device =>
         e.preventDefault();
         try {
             setSubmitStatus({ loading: true, success: false, error: null });
-            const response = await fetch(`http://localhost:5000/api/admin/submit_iot_data/${doorData.deviceId}`, {
+            const response = await fetch(`https://iot-device-manager.vercel.app/api/admin/submit_iot_data/${doorData.deviceId}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(doorData),
@@ -79,7 +79,7 @@ const filteredDevices = devices.filter(device =>
 
     const handleUpdateSubmit = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/update_iot_data/${editData.deviceId}`, {
+            const response = await fetch(`https://iot-device-manager.vercel.app/api/admin/update_iot_data/${editData.deviceId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(editData),

@@ -8,7 +8,6 @@ export const DeviceDataProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const fetchLatestData = async () => {
-      // alert("we are fetching");  
 
     try {
       const response = await fetch('http://localhost:5000/api/user/get_iot_data');

@@ -1,4 +1,7 @@
-import React, { useContext } from 'react';
+
+
+
+import React, { useContext, useRef, useEffect } from 'react';
 import { DeviceDataContext } from './DeviceDataContext';
 import {
   Chart as ChartJS,
@@ -11,11 +14,9 @@ import {
   Legend,
   Title,
 } from 'chart.js';
-
 import { Bar, Pie } from 'react-chartjs-2';
-import './UserChartDashboard.css'; // Import CSS file
+import './UserChartDashboard.css';
 
-// Register chart.js components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -29,12 +30,22 @@ ChartJS.register(
 
 const UserChartDashboard = () => {
   const { deviceData, loading, error } = useContext(DeviceDataContext);
+  const barRef = useRef(null);
+  const pieRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      barRef.current?.resize();
+      pieRef.current?.resize();
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   if (loading) return <p>Loading device data...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!deviceData || deviceData.length === 0) return <p>No device data available.</p>;
 
-  // Battery Level Bar Chart Data
   const batteryLabels = deviceData.map((d) => `Device ${d.deviceId}`);
   const batteryData = deviceData.map((d) => d.batteryStatus);
 
@@ -53,6 +64,7 @@ const UserChartDashboard = () => {
 
   const batteryChartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { position: 'top' },
       title: { display: true, text: 'Battery Levels of Devices' },
@@ -62,7 +74,7 @@ const UserChartDashboard = () => {
     },
   };
 
-  // Lock Status Pie Chart Data
+  // Lock status pie chart
   const lockedCount = deviceData.filter((d) => d.locked).length;
   const unlockedCount = deviceData.length - lockedCount;
 
@@ -80,6 +92,7 @@ const UserChartDashboard = () => {
 
   const lockStatusOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: { position: 'bottom' },
       title: { display: true, text: 'Lock Status Distribution' },
@@ -87,15 +100,19 @@ const UserChartDashboard = () => {
   };
 
   return (
-    <div className="container">
+    <div className="chart-dashboard-container">
       <h1>User Device Charts</h1>
 
       <section className="chart-section">
-        <Bar data={batteryChartData} options={batteryChartOptions} />
+        <div className="chart-wrapper">
+          <Bar ref={barRef} data={batteryChartData} options={batteryChartOptions} />
+        </div>
       </section>
 
       <section className="chart-section">
-        <Pie data={lockStatusData} options={lockStatusOptions} />
+        <div className="chart-wrapper">
+          <Pie ref={pieRef} data={lockStatusData} options={lockStatusOptions} />
+        </div>
       </section>
     </div>
   );

@@ -670,3 +670,140 @@ input[type="range"]:focus::-webkit-slider-thumb {
 .cancel-btn:hover {
   background-color: #bdbdbd;
 }
+
+
+
+
+/* Small Tablets and Mobiles */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 10px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-header p {
+    font-size: 1rem;
+  }
+
+  .admin-content {
+    grid-template-columns: 1fr;
+  }
+
+  .door-form-container,
+  .door-info-panel {
+    padding: 20px;
+  }
+
+  .door-form-container h2,
+  .door-info-panel h2 {
+    font-size: 1.2rem;
+  }
+
+  .form-group label,
+  .modal .form-group label {
+    font-size: 0.95rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group select,
+  .search-input {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  .submit-btn,
+  .cancel-btn,
+  .update-btn {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+
+  .info-card h3 {
+    font-size: 1rem;
+  }
+
+  .info-card p {
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    padding: 20px;
+    width: 95%;
+  }
+
+  .modal h2 {
+    font-size: 1.4rem;
+  }
+
+  .range-value {
+    font-size: 0.9rem;
+  }
+}
+
+/* Extra Small Devices - Mobiles */
+@media (max-width: 480px) {
+  .admin-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .admin-header p {
+    font-size: 0.9rem;
+  }
+
+  .form-group label,
+  .modal .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input[type="text"],
+  .form-group select,
+  .search-input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .submit-btn,
+  .cancel-btn,
+  .update-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .door-form-container,
+  .door-info-panel {
+    padding: 15px;
+  }
+
+  .info-card {
+    padding: 14px 16px;
+  }
+
+  .info-card h3 {
+    font-size: 0.95rem;
+  }
+
+  .info-card p {
+    font-size: 0.85rem;
+  }
+
+  .modal h2 {
+    font-size: 1.2rem;
+  }
+
+  .range-value {
+    font-size: 0.85rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal-actions .submit-btn,
+  .modal-actions .cancel-btn {
+    width: 100%;
+  }
+}

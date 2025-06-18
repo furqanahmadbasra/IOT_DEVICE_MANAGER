@@ -1,8 +1,6 @@
-/* UserChartDashboard.css */
-
-.container {
+.chart-dashboard-container {
   padding: 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
 }
@@ -11,17 +9,54 @@ h1 {
   text-align: center;
   margin-bottom: 40px;
   color: #222;
+  font-size: 1.8rem;
 }
 
 .chart-section {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.chart-section canvas {
-  max-width: 600px !important;  /* max width */
-  max-height: 350px !important; /* max height */
-  width: 100% !important;       /* responsive */
-  height: auto !important;
+.chart-wrapper {
+  width: 100%;
+  max-width: 700px;
+  aspect-ratio: 3 / 2;
+  position: relative;
+}
+
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  .chart-wrapper {
+    max-width: 550px;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.4rem;
+  }
+  .chart-wrapper {
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem;
+  }
+  .chart-wrapper {
+    aspect-ratio: 1 / 1;
+  }
 }
